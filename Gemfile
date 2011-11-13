@@ -18,6 +18,7 @@ group :assets do
 end
 
 gem 'paperclip'
+gem 'pg'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
