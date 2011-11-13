@@ -1,0 +1,23 @@
+<%= form_for @favorite, :url => favorites_url do |f| %>
+  <% if @favorite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@favorite.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @favorite.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Add_a_note! %><br />
+    <%= f.text_area :note%>
+  </div>
+    <%= f.hidden_field :item_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
