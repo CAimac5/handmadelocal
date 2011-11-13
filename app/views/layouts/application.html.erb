@@ -14,7 +14,7 @@
 
       <% if logged_in? %>
       <div class="pull-right">
-        <%=link_to "Sell", "#"%> -
+        <%=link_to "Sell", new_item_url%> -
         <%=link_to "Favorites", favorites_url%> -
         <%=link_to "My Account", user_url(current_user) %> -
         <%=link_to "Sign Out", logout_url, :method => :delete%>
@@ -40,6 +40,8 @@
          </div>
        </div>
      </div>
+     
+<%= flash[:notice] %>
 <%= yield %>
 
 </body>

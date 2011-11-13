@@ -64,7 +64,7 @@
            <h2>Items</h2>
            <div class="span4">
              <% @items.each do |item|%>
-               <li><%= item.title %></li>
+               <li><%= link_to item.title, item_url(item) %></li>
              <% end %>
           </div>
          </div>

@@ -11,7 +11,7 @@ class SessionsController < ActionController::Base
       redirect_to root_url, :notice => "You're logged in!"
     else
       flash[:notice] = "Try again to log in."
-      render :index
+      redirect_to root_path
     end
   end
   

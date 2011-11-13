@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  before_filter :require_seller, :only => [:new, :edit]
+
   # GET /items
   # GET /items.json
   def index
@@ -35,7 +38,8 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = Item.find(params[:id])
+    user = current_user
+    @item = user.Item.find(params[:id])
     img_number_to_show = 4 - @item.item_images.count
     img_number_to_show.times {@item.item_images.build}
   end
