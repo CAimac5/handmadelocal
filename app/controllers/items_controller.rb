@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
+    4.times {@item.item_images.build}
   end
 
   # POST /items
