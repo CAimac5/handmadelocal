@@ -17,7 +17,8 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
-
+    a=@item.item_images.count
+    a.times {@item.item_images.build}
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @item }
@@ -39,7 +40,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     user = current_user
-    @item = user.Item.find(params[:id])
+    @item = Item.find(params[:id])
     img_number_to_show = 4 - @item.item_images.count
     img_number_to_show.times {@item.item_images.build}
   end
