@@ -2,7 +2,7 @@ Handmadelocal::Application.routes.draw do
   
   resources :favorites
   
-  root :to => "home#index"
+  root :to => "items#index"
 
   resources :users   
   
@@ -10,6 +10,7 @@ Handmadelocal::Application.routes.draw do
 
   resources :items
   
+  get "home/index", :controller => "home", :action => "index"
   #get "sessions/new"
   post "sessions/create", :as => :login
   delete "sessions/destroy", :as => :logout

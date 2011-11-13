@@ -48,6 +48,10 @@
     <%= f.number_field :zip %>
   </div>
   <div class="field">
+    <%= f.label :neighborhood %><br />
+    <%= f.collection_select :neighborhood_id, Neighborhood.all, :id, :name %>
+  </div>
+  <div class="field">
     <%= f.label :seller %><br />
     <%= f.check_box :seller %>
   </div>

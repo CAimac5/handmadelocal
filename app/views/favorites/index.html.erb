@@ -14,7 +14,11 @@ h1>Favorites</h1>
   <tr>
     <td><%= favorite.item.title%></td>
     <td><% a = favorite.user%> <%= a.first_name %> <%=a.last_name%></td>
-    <td><%= favorite.note%></td>
+    <td><% if favorite.note?%>
+	 		<%=favorite.note%>
+		<% else%>
+		<%= link_to "Add Note", favorites_url%>
+		<% end %></td>
     <td><%= link_to 'Destroy', favorite_url(favorite), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

@@ -7,42 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="topbar">
-       <div class="fill">
-         <div class="container">
-           <a class="brand"><%= link_to "Handmade Local", root_url %></a> 
+  <div id="container">
+    <div id="content">
+      <div id="topbar">
+        
+        <a class="brand"><%= link_to "Handmade Local", root_url %></a> 
 
-      <% if logged_in? %>
-      <div class="pull-right">
-        <%=link_to "Sell", new_item_url%> -
-        <%=link_to "Favorites", favorites_url%> -
-        <%=link_to "My Account", user_url(current_user) %> -
-        <%=link_to "Sign Out", logout_url, :method => :delete%>
+        <% if logged_in? %>
+          <div id="pull-right">
+            <%=link_to "Sell", new_item_url%> -
+            <%=link_to "Favorites", favorites_url%> -
+            <%=link_to "My Account", user_url(current_user) %> -
+            <%=link_to "Sign Out", logout_url, :method => :delete%>
+          </div>
+        <% else %>
+          <div id="pull-right">
+            <%=form_tag login_url do %>
+              <%=text_field_tag :email %>
+              <%=password_field_tag :password %>
+              <%=submit_tag "Sign In"%>
+            <% end %>
+            
+          </div>
+        <% end %>
+          
       </div>
-      <% else %>
-        <div class="pull-right">
-          <%=form_tag login_url do %>
-            <%=text_field_tag :email %>
-            <%=password_field_tag :password %>
-            <%=submit_tag "Sign In"%>
-          <% end %>
-          <%=link_to "Sign Up", new_user_url %>
 
-        </div>
+      <div id="main">        
+        <%= flash[:notice] %>
+        <%= yield %>
+      </div>    
 
-      <% end %>
-      <%= notice %>
-           <!-- <form action="/sessions/create" class="pull-right">
-                      <input class="input-small" type="text" placeholder="Username">
-                      <input class="input-small" type="password" placeholder="Password">
-                      <button class="btn" type="submit">Sign in</button>
-                    </form> -->
-         </div>
-       </div>
-     </div>
-     
-<%= flash[:notice] %>
-<%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>

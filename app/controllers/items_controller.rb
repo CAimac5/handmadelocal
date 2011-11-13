@@ -5,7 +5,9 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.order("description asc").page(params[:page]).per(5)
+    #@items = @items.page([:page]).per(5)
+    #@items = @user.items.order("description asc").page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +19,7 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
+    @user = @item.user_id
     a=@item.item_images.count
     a.times {@item.item_images.build}
     respond_to do |format|

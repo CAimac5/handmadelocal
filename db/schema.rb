@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111113044027) do
+ActiveRecord::Schema.define(:version => 20111113164628) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -48,6 +48,12 @@ ActiveRecord::Schema.define(:version => 20111113044027) do
     t.datetime "updated_at"
   end
 
+  create_table "neighborhoods", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "states", :force => true do |t|
     t.string   "name"
     t.string   "state_abbreviation"
@@ -71,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20111113044027) do
     t.datetime "updated_at"
     t.boolean  "seller",          :default => false
     t.boolean  "admin",           :default => false
+    t.integer  "neighborhood_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

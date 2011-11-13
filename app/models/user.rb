@@ -2,7 +2,13 @@ class User < ActiveRecord::Base
   
   has_secure_password
   
+  has_many :items
+  
   has_many :favorites
+  
+  has_one :neighborhood
+  
+  has_one :state
   
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -13,4 +19,11 @@ class User < ActiveRecord::Base
                                       :uniqueness => { :case_sensitive => false }
   
   validates :zip, :numericality => true, :length => {:is => 5}
+    
+  geocoded_by :full_address
+  after_validation :geocode, :if => :address_changed?  
+    
+  def full_address
+    [address, city, @state, zip].compact.join(', ')
+  end
 end

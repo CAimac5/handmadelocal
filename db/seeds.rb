@@ -13,3 +13,22 @@ end
 
 Category.destroy_all 
 categories = Category.create([{:title => 'Accessories' }, { :title => ' Art' }, { :title => ' Bags' }, { :title => ' Books' }, { :title => ' Candles' }, { :title => ' Clothing-Men' }, { :title => ' Clothing-Women' }, { :title => ' Food' }, { :title => ' Furniture' }, { :title => ' Jewelry-Bracelets' }, { :title => ' Jewelry-Earrings' }, { :title => ' Jewelry-Necklaces' }, { :title => ' Jewelry-Other' }, { :title => ' Jewelry-Rings' }, { :title => ' Kitchen Goods' }, { :title => ' Knitted/Quilted/Crocheted' }, { :title => ' Other' }, { :title => ' Paper Goods' }, { :title => ' Pet supplies' }, { :title => ' Pottery' }, { :title => ' Toiletries'}])
+
+Neighborhood.destroy_all
+Neighborhood.create(:name => 'Lincoln Park')
+Neighborhood.create(:name => 'Lakeview')
+Neighborhood.create(:name => 'Ravenswood')
+Neighborhood.create(:name => 'Roscoe Village')
+Neighborhood.create(:name => 'Old Town')
+Neighborhood.create(:name => 'Loop')
+Neighborhood.create(:name => 'South Loop')
+Neighborhood.create(:name => 'River North')
+Neighborhood.create(:name => 'Hyde Park')
+Neighborhood.create(:name => 'Wicker Park')
+Neighborhood.create(:name => 'Bucktown')
+Neighborhood.create(:name => 'Logan Square')
+Neighborhood.create(:name => 'Jefferson Park')
+Neighborhood.create(:name => 'Old Irving Park')
+Neighborhood.create(:name => 'West Loop')
+Neighborhood.create(:name => 'North Center')
+Neighborhood.create(:name => 'Bronzeville')

@@ -13,9 +13,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = session[:user_id]
-    @user = User.find(@user)
-    
+    # @user = session[:user_id]     WE'll add this in as a filter when the time is right.
+    #   @user = User.find(@user)    This line too, then delete the next line "@user = User. find....."
+    @user = User.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @user }
@@ -26,7 +26,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
-
+    @state = @user.state
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @user }
