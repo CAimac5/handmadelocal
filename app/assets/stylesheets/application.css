@@ -32,12 +32,12 @@
 
 #pull-right {
  float: right;
+ padding:;
 }
 
 #topbar {
-background-color: silver;
   width: 940px;
-  height: 30px;
+  height: 60px;
   float: middle;
   padding: 5px 5px 5px 10px;
   z-index: 10000;
