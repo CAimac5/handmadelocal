@@ -4,7 +4,7 @@ before_filter :logged_in?
 before_filter :require_sign_in, :only => [:edit, :show, :create, :update, :destroy, :new]
 
   def index
-    @user = User.find(session[:user_id])
+    @user = current_user
     @favorites = @user.favorites.all
   end
 

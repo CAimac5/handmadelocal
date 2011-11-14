@@ -12,7 +12,7 @@
 
 <% @favorites.each do |favorite| %>
   <tr>
-    <td><%= favorite.item.title%></td>
+    <td><%= favorite.item.title %></td>
     <td><% a = favorite.user %> <%= a.first_name %> <%=a.last_name%></td>
     <td><% if favorite.note?%>
 	 		<%=favorite.note%>

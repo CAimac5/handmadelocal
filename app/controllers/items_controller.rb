@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
 
     if params[:Category].present?
       @items = @items.where(:category_id => params[:Category])
-    else
     end
     
 
