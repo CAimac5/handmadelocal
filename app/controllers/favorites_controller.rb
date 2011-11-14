@@ -34,8 +34,8 @@ before_filter :require_sign_in, :only => [:edit, :show, :create, :update, :destr
   
   def update
       @favorite = Favorite.find(params[:id])
-      @favorite.note = params[:note]
-      @favorite.save     #THIS LINE IS NOT SAVING!!!!??? WTF????
+      @favorite.note = params[:favorite][:note]
+      @favorite.save     #THIS CODE HAS NO ERRORS, BUT OUR NOTE IS NOT SAVING!!!!??? WTF????
       redirect_to favorites_url, :notice => "Item has been updated"
   end  
 
