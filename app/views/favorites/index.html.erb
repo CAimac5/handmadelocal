@@ -14,7 +14,7 @@
   <tr>
     <td><%= favorite.item.title %></td>
     <td><% a = favorite.user %> <%= a.first_name %> <%=a.last_name%></td>
-    <td><% if favorite.note?%>
+    <td><% if favorite.note.present?%>
 	 		<%=favorite.note%>
 		<% else%>
 		<%= link_to "Add Note", edit_favorite_url(favorite)%>

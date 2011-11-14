@@ -4,7 +4,7 @@
 		<%= link_to(image_tag(listing_image.image.url(:small)), listing_image.image.url(:large)) %>
 	<%end %>
 </p>
-<%= form_for @favorite, :url => favorites_url do |f| %>
+<%= form_for @favorite do |f| %>
   <% if @favorite.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@favorite.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -18,8 +18,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Add_a_note! %><br />
+	<% if @favorite.note.present? %>
+	<%= @favorite.note %>
+	<% else %>
+    <%= f.label :Add_a_note %><br />
     <%= f.text_area :note%>
+	<% end %>
   </div>
     <%= f.hidden_field :item_id %>
 	<%= f.hidden_field :user_id %>
@@ -28,3 +32,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<!-- :url => favorites_url(@favorite_id) -->

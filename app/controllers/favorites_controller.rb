@@ -32,15 +32,15 @@ before_filter :require_sign_in, :only => [:edit, :show, :create, :update, :destr
     end
   end
   
-  # def update
-  #   @favorite = Favorite.find(params[:id])
-  #   @favorite.note = params[:note]
-  #   @favorite.save
-  #   redirect_to item_url(params[:id]), :notice => "Item has been updated"
-  # end  
-  
-  def destroy
+  def update
+      @favorite = Favorite.find(params[:id])
+      @favorite.note = params[:note]
+      @favorite.save     #THIS LINE IS NOT SAVING!!!!??? WTF????
+      redirect_to favorites_url, :notice => "Item has been updated"
+  end  
 
+  def destroy
+      
   end
 
 
