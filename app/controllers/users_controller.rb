@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+  
+  before_filter :require_admin, :only => :index
+  before_filter :require_new_user, :only => :new
+  
   def index
     @users = User.all
 
@@ -16,6 +20,7 @@ class UsersController < ApplicationController
     # @user = session[:user_id]     WE'll add this in as a filter when the time is right.
     #   @user = User.find(@user)    This line too, then delete the next line "@user = User. find....."
     @user = User.find(params[:id])
+    @items = Item.where(:user_id => @user.id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @user }
@@ -25,6 +30,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
+    
     @user = User.new
     @state = @user.state
     

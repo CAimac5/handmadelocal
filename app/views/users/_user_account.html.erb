@@ -40,7 +40,7 @@
 
 <p>
   <b>Seller:</b>
-  <%= @user.seller %>
+  <%= @user.seller? ? "Yes" : "No" %>
 </p>
 
 <p>
@@ -49,5 +49,4 @@
 </p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+

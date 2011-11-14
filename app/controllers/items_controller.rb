@@ -5,7 +5,32 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.order("description asc").page(params[:page]).per(5)
+    @items = Item.scoped
+
+    if params[:Category].present?
+      @items = @items.where(:category_id => params[:Category])
+    else
+    end
+    
+
+     #if params[:price].present?
+       #@items = @items.where(":price <= ?", params[:price])
+    #   # @items = @items.where(":price <= ?", "#{params[:price]}")
+    #   # @items = @items.where(":price <= ?", "%#{params[:price]}%")      
+     #end
+    
+    if params[:search].present?
+      @items = @items.where(["title LIKE ?", "%#{params[:search]}%"])
+    end
+    
+    if params['Neighborhood'].present?
+      users = User.where(:neighborhood_id => params['Neighborhood'])
+      #@items = @items.where(users.neighborhood => params[:neighborhood] )
+      @items = @items.where(["user_id IN ( ? )", users.map{|u| u.id}])
+    end
+    
+    @items = @items.page(params[:page]).per(5)
+    # @items = Item.order("description asc").page(params[:page]).per(5)
     #@items = @items.page([:page]).per(5)
     #@items = @user.items.order("description asc").page(params[:page]).per(5)
 

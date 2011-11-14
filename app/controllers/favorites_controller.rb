@@ -1,15 +1,18 @@
 class FavoritesController < ApplicationController
 
+before_filter :logged_in?
+before_filter :require_sign_in, :only => [:edit, :show, :create, :update, :destroy, :new]
+
   def index
     @user = User.find(session[:user_id])
     @favorites = @user.favorites.all
   end
 
-  def new
-    @favorite = Favorite.new
-    @user = current_user
-    @item = Item.first
-  end
+  # def new
+  #    @favorite = Favorite.new
+  #    @user = current_user
+  #    @item = Item.first
+  #  end
 
   def create
     @favorite = Favorite.new
@@ -20,12 +23,21 @@ class FavoritesController < ApplicationController
   end
 
   def edit
-    @favorite = Favorite.find(params[:id])
+    user = User.find(session[:user_id])
+    if user.favorites.find(params[:id]).present?
+      @favorite = user.favorites.find(params[:id])
+      return
+    else
+      redirect_to user_url(session[:user_id]), :notice => "Not your favorite!"
+    end
   end
   
-  def update
-  
-  end  
+  # def update
+  #   @favorite = Favorite.find(params[:id])
+  #   @favorite.note = params[:note]
+  #   @favorite.save
+  #   redirect_to item_url(params[:id]), :notice => "Item has been updated"
+  # end  
   
   def destroy
 

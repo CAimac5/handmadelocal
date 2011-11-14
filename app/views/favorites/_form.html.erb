@@ -1,3 +1,9 @@
+<h1>A favorite item of your's: '<%=@favorite.item.title%></h1>
+<p>
+	<%  @favorite.item.item_images.each do |listing_image| %>
+		<%= link_to(image_tag(listing_image.image.url(:small)), listing_image.image.url(:large)) %>
+	<%end %>
+</p>
 <%= form_for @favorite, :url => favorites_url do |f| %>
   <% if @favorite.errors.any? %>
     <div id="error_explanation">

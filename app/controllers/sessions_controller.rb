@@ -8,7 +8,7 @@ class SessionsController < ActionController::Base
     #raise params[:password].inspect
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_url, :notice => "You're logged in!"
+      redirect_to root_url, :notice => "Thank you for logging in!"
     else
       flash[:notice] = "Try again to log in."
       redirect_to root_path

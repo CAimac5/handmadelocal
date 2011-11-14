@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   
   has_many :favorites
   
-  has_one :neighborhood
+  belongs_to :neighborhood
   
   has_one :state
   

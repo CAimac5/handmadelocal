@@ -1,4 +1,4 @@
-h1>Favorites</h1>
+<h1>Favorites</h1>
 
 <table>
   <tr>
@@ -13,11 +13,11 @@ h1>Favorites</h1>
 <% @favorites.each do |favorite| %>
   <tr>
     <td><%= favorite.item.title%></td>
-    <td><% a = favorite.user%> <%= a.first_name %> <%=a.last_name%></td>
+    <td><% a = favorite.user %> <%= a.first_name %> <%=a.last_name%></td>
     <td><% if favorite.note?%>
 	 		<%=favorite.note%>
 		<% else%>
-		<%= link_to "Add Note", favorites_url%>
+		<%= link_to "Add Note", edit_favorite_url(favorite)%>
 		<% end %></td>
     <td><%= link_to 'Destroy', favorite_url(favorite), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

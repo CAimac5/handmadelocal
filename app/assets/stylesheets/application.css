@@ -7,9 +7,10 @@
 */
 
 #container {
-  width: 960px;
+  width: 900px;
   margin:0 auto;
   zoom: 1;
+  float:middle;
 }
 #container:before, #container:after {
   display: table;
@@ -32,11 +33,15 @@
 
 #pull-right {
  float: right;
- padding:;
+ color: gray;
+}
+#sign_in {
+ float: right;
+ padding: 2px 5px 0 0;
 }
 
 #topbar {
-  width: 940px;
+  width: 850px;
   height: 60px;
   float: middle;
   padding: 5px 5px 5px 10px;
@@ -44,14 +49,31 @@
   overflow: visible;
 }
 
+  #topbar a:hover {
+    text-decoration:none;
+  }
+
 #main {
-  width: 940px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 920px;
+  padding: 0 30px 0 30px ;
   zoom: 1;
 }
+
 #main:before, #main:after {
   display: table;
   content: "";
   zoom: 1;
+}
+
+#item_map {
+  float: right;
+  
+}
+
+#search_bar {
+	foat:middle;
+}
+
+#welcome {
+  width: 800px;
 }
